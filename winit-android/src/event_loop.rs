@@ -369,7 +369,12 @@ impl EventLoop {
                                     _ => event::PointerKind::Unknown,
                                 },
                             };
-                            app.window_event(&self.window_target, GLOBAL_WINDOW, Instant::now(), event);
+                            app.window_event(
+                                &self.window_target,
+                                GLOBAL_WINDOW,
+                                Instant::now(),
+                                event,
+                            );
                             let event = event::WindowEvent::PointerButton {
                                 device_id,
                                 primary,
@@ -384,7 +389,12 @@ impl EventLoop {
                                     _ => event::ButtonSource::Unknown(0),
                                 },
                             };
-                            app.window_event(&self.window_target, GLOBAL_WINDOW, Instant::now(), event);
+                            app.window_event(
+                                &self.window_target,
+                                GLOBAL_WINDOW,
+                                Instant::now(),
+                                event,
+                            );
                         },
                         MotionAction::Move => {
                             let primary = self.primary_pointer == Some(finger_id);
@@ -401,7 +411,12 @@ impl EventLoop {
                                     _ => event::PointerSource::Unknown,
                                 },
                             };
-                            app.window_event(&self.window_target, GLOBAL_WINDOW, Instant::now(), event);
+                            app.window_event(
+                                &self.window_target,
+                                GLOBAL_WINDOW,
+                                Instant::now(),
+                                event,
+                            );
                         },
                         MotionAction::Up | MotionAction::PointerUp | MotionAction::Cancel => {
                             let primary = action == MotionAction::Up
@@ -427,7 +442,12 @@ impl EventLoop {
                                         _ => event::ButtonSource::Unknown(0),
                                     },
                                 };
-                                app.window_event(&self.window_target, GLOBAL_WINDOW, Instant::now(), event);
+                                app.window_event(
+                                    &self.window_target,
+                                    GLOBAL_WINDOW,
+                                    Instant::now(),
+                                    event,
+                                );
                             }
 
                             let event = event::WindowEvent::PointerLeft {
@@ -443,7 +463,12 @@ impl EventLoop {
                                     _ => event::PointerKind::Unknown,
                                 },
                             };
-                            app.window_event(&self.window_target, GLOBAL_WINDOW, Instant::now(), event);
+                            app.window_event(
+                                &self.window_target,
+                                GLOBAL_WINDOW,
+                                Instant::now(),
+                                event,
+                            );
                         },
                         _ => unreachable!(),
                     }

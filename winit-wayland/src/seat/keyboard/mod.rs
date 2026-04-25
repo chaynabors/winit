@@ -133,10 +133,8 @@ impl Dispatch<WlKeyboard, KeyboardData, WinitState> for WinitState {
                 if matches!(key_state, WlKeyState::Repeated | WlKeyState::Pressed) =>
             {
                 let key = key + 8;
-                let timestamp = WinitState::resolve_compositor_time_ms(
-                    &state.compositor_time_ms_anchor,
-                    time,
-                );
+                let timestamp =
+                    WinitState::resolve_compositor_time_ms(&state.compositor_time_ms_anchor, time);
                 key_input(
                     keyboard_state,
                     &mut state.events_sink,
@@ -210,12 +208,12 @@ impl Dispatch<WlKeyboard, KeyboardData, WinitState> for WinitState {
                     })
                     .ok();
             },
-            WlKeyboardEvent::Key { key, state: WEnum::Value(WlKeyState::Released), time, .. } => {
+            WlKeyboardEvent::Key {
+                key, state: WEnum::Value(WlKeyState::Released), time, ..
+            } => {
                 let key = key + 8;
-                let timestamp = WinitState::resolve_compositor_time_ms(
-                    &state.compositor_time_ms_anchor,
-                    time,
-                );
+                let timestamp =
+                    WinitState::resolve_compositor_time_ms(&state.compositor_time_ms_anchor, time);
 
                 key_input(
                     keyboard_state,
